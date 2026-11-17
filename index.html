@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5636a5">
+<meta name="description" content="Aprende diseño web paso a paso con HTML, CSS y JavaScript.">
+<title>Mi Diseño Web | Inicio</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235636a5'/%3E%3Ctext x='32' y='44' font-size='36' text-anchor='middle' fill='white'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<style>
+:root{--pri:#5636a5;--pri2:#7c5cd6;--bg:#f7f5fc;--soft:#f5f1ff;--tx:#241a3d;--mut:#6b6485;--bd:#e2dcf3;--ok:#15803d;--bad:#b91c1c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}
+a{color:inherit}
+/* Cabecera */
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 20px;background:var(--pri);color:#fff;flex-wrap:wrap}
+.logo{font-weight:700;font-size:1.15rem;text-decoration:none;color:#fff}
+.menu{display:none;background:rgba(255,255,255,.18);color:#fff;border:none;border-radius:8px;font-size:1.3rem;padding:4px 12px;cursor:pointer}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px;font-size:.95rem}
+nav a:hover{background:rgba(255,255,255,.18)}
+nav a.active{background:#fff;color:var(--pri);font-weight:700}
+@media (max-width:720px){
+  .menu{display:block}
+  nav{display:none;width:100%;flex-direction:column}
+  nav.open{display:flex}
+}
+/* Estructura */
+main{max-width:1000px;margin:0 auto;padding:20px}
+.page{display:none}
+.page.on{display:block}
+.tag{display:inline-block;background:var(--soft);color:var(--pri);font-weight:700;font-size:.75rem;letter-spacing:.06em;padding:4px 12px;border-radius:999px;border:1px solid var(--bd)}
+h1{font-size:2.2rem;line-height:1.2;margin:12px 0}
+h2{margin:26px 0 10px}
+h2.center{text-align:center}
+.btn{display:inline-block;background:var(--pri);color:#fff;text-decoration:none;border:none;padding:12px 22px;border-radius:12px;font:inherit;font-weight:700;cursor:pointer;margin-top:10px}
+.btn:hover{background:var(--pri2)}
+.btn.secondary{background:#fff;color:var(--pri);border:2px solid var(--pri)}
+.btn.light{background:#fff;color:var(--pri)}
+/* Portada */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;padding:30px 0}
+@media (max-width:720px){.hero{grid-template-columns:1fr}h1{font-size:1.8rem}}
+.code-window{background:#1e1537;color:#e9e2ff;border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(86,54,165,.3)}
+.dots{color:#a78bfa;font-size:.8rem;letter-spacing:3px}
+.code-window pre{margin:10px 0;white-space:pre-wrap;font-family:Consolas,Menlo,monospace}
+.preview{background:#fff;color:var(--tx);border-radius:10px;padding:14px;text-align:center}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:18px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(86,54,165,.15)}
+.card h3{margin:6px 0}
+.card p{color:var(--mut);margin:0 0 8px;font-size:.95rem}
+.emoji{font-size:2rem}
+.more{color:var(--pri);font-weight:700}
+.install{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:30px;background:var(--pri);color:#fff;border-radius:18px;padding:20px 24px}
+.install h2{margin:0 0 4px}
+.install p{margin:0}
+/* Lecciones */
+.lesson pre{background:#1e1537;color:#e9e2ff;padding:16px;border-radius:12px;overflow:auto;font-family:Consolas,Menlo,monospace;font-size:.95rem}
+code{font-family:Consolas,Menlo,monospace;background:var(--soft);border:1px solid var(--bd);padding:1px 6px;border-radius:6px;color:var(--pri)}
+pre code{background:none;border:none;padding:0;color:inherit}
+.table{background:#fff;border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.table p{margin:0;padding:10px 16px;border-bottom:1px solid var(--bd)}
+.table p:last-child{border-bottom:none}
+.table code{margin-right:8px}
+.tip{background:var(--soft);border-left:5px solid var(--pri);padding:12px 16px;border-radius:8px;margin:20px 0}
+/* Quiz */
+.quiz{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:20px;margin:16px 0}
+.quiz h2{margin-top:0}
+.answer{display:block;width:100%;text-align:left;font:inherit;padding:12px 16px;margin:8px 0;border-radius:10px;border:2px solid var(--bd);background:#fff;cursor:pointer}
+.answer:hover:not(:disabled){border-color:var(--pri)}
+.answer.good{border-color:var(--ok);background:#dcfce7}
+.answer.bad{border-color:var(--bad);background:#fee2e2}
+#feedback{font-weight:700;min-height:1.5em}
+.small{color:var(--mut);font-size:.85rem}
+.install .small{color:#e9e2ff}
+footer{text-align:center;color:var(--mut);padding:30px 20px;border-top:1px solid var(--bd);margin-top:30px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="#inicio">✦ Mi Diseño Web</a>
+  <button class="menu" id="menuBtn" aria-label="Abrir menú">☰</button>
+  <nav id="nav">
+    <a href="#inicio" data-p="inicio">Inicio</a>
+    <a href="#html" data-p="html">HTML</a>
+    <a href="#css" data-p="css">CSS</a>
+    <a href="#javascript" data-p="javascript">JavaScript</a>
+    <a href="#practicas" data-p="practicas">Prácticas</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ INICIO ============ -->
+<div class="page" id="p-inicio" data-title="Mi Diseño Web | Inicio">
+  <section class="hero">
+    <div>
+      <span class="tag">APRENDE A TU RITMO</span>
+      <h1>Diseña tu primera página web</h1>
+      <p>Una guía sencilla para aprender HTML, CSS y JavaScript desde cero. Estudia, practica y crea proyectos desde tu computadora o celular.</p>
+      <a class="btn" href="#html">Comenzar a aprender</a>
+    </div>
+    <div>
+      <div class="code-window">
+        <div class="dots">● ● ●</div>
+        <pre><code>&lt;h1&gt;¡Hola, mundo!&lt;/h1&gt;
+&lt;p&gt;Mi primera web&lt;/p&gt;</code></pre>
+        <div class="preview">Tu creatividad<br><strong>no tiene límites.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="center">Tu ruta de aprendizaje</h2>
+  <section class="cards">
+    <a class="card" href="#html"><span class="emoji">🧱</span><h3>1. HTML</h3><p>Aprende a organizar el contenido de una página.</p><span class="more">Aprender →</span></a>
+    <a class="card" href="#css"><span class="emoji">🎨</span><h3>2. CSS</h3><p>Agrega colores, estilos y diseños adaptables.</p><span class="more">Aprender →</span></a>
+    <a class="card" href="#javascript"><span class="emoji">⚡</span><h3>3. JavaScript</h3><p>Haz que tu página sea interactiva.</p><span class="more">Aprender →</span></a>
+    <a class="card" href="#practicas"><span class="emoji">💻</span><h3>4. Practica</h3><p>Resuelve pequeños retos y comprueba lo aprendido.</p><span class="more">Practicar →</span></a>
+  </section>
+
+  <section class="install">
+    <div>
+      <h2>Aprende también desde tu celular</h2>
+      <p>Cuando la publiques en GitHub Pages, ábrela en el celular y agrégala a tu pantalla de inicio.</p>
+    </div>
+    <span class="small">En Chrome: menú ⋮ → “Agregar a pantalla de inicio”. En iPhone (Safari): Compartir → “Añadir a pantalla de inicio”.</span>
+  </section>
+  <footer>Mi Diseño Web · Aprende, practica y crea.</footer>
+</div>
+
+<!-- ============ HTML ============ -->
+<div class="page lesson" id="p-html" data-title="HTML | Mi Diseño Web">
+  <span class="tag">LECCIÓN 01</span>
+  <h1>HTML: la estructura de tu página</h1>
+  <p>HTML significa lenguaje de marcado de hipertexto. Se utiliza para organizar títulos, párrafos, imágenes, enlaces y otros contenidos.</p>
+  <h2>Etiquetas básicas</h2>
+  <div class="table">
+    <p><code>&lt;h1&gt;</code> Título principal</p>
+    <p><code>&lt;p&gt;</code> Párrafo de texto</p>
+    <p><code>&lt;img&gt;</code> Imagen</p>
+    <p><code>&lt;a&gt;</code> Enlace</p>
+    <p><code>&lt;button&gt;</code> Botón</p>
+  </div>
+  <h2>Ejemplo</h2>
+  <pre><code>&lt;h1&gt;Mi primera página&lt;/h1&gt;
+&lt;p&gt;Estoy aprendiendo HTML.&lt;/p&gt;
+&lt;a href="https://github.com"&gt;Visita GitHub&lt;/a&gt;</code></pre>
+  <div class="tip">Consejo: guarda tu archivo principal con el nombre <strong>index.html</strong>.</div>
+  <a class="btn" href="#css">Continuar con CSS →</a>
+  <footer>Mi Diseño Web · Lección de HTML</footer>
+</div>
+
+<!-- ============ CSS ============ -->
+<div class="page lesson" id="p-css" data-title="CSS | Mi Diseño Web">
+  <span class="tag">LECCIÓN 02</span>
+  <h1>CSS: dale estilo a tu página</h1>
+  <p>CSS significa hojas de estilo en cascada. Controla colores, tamaños, espacios, bordes y la distribución de los elementos.</p>
+  <h2>Ejemplo de CSS</h2>
+  <pre><code>body {
+  background: #f5f1ff;
+  font-family: Arial, sans-serif;
+}
+h1 {
+  color: #5636a5;
+  text-align: center;
+}</code></pre>
+  <h2>Propiedades que debes conocer</h2>
+  <div class="table">
+    <p><code>color</code> Cambia el color del texto.</p>
+    <p><code>background</code> Cambia el fondo.</p>
+    <p><code>padding</code> Agrega espacio interior.</p>
+    <p><code>margin</code> Agrega espacio exterior.</p>
+    <p><code>border-radius</code> Redondea las esquinas.</p>
+  </div>
+  <div class="tip">Consejo: utiliza <strong>media queries</strong> para adaptar el diseño a celulares.</div>
+  <a class="btn" href="#javascript">Continuar con JavaScript →</a>
+  <footer>Mi Diseño Web · Lección de CSS</footer>
+</div>
+
+<!-- ============ JAVASCRIPT ============ -->
+<div class="page lesson" id="p-javascript" data-title="JavaScript | Mi Diseño Web">
+  <span class="tag">LECCIÓN 03</span>
+  <h1>JavaScript: agrega interacción</h1>
+  <p>JavaScript permite responder a acciones de las personas, validar formularios, mostrar mensajes y actualizar el contenido de una página.</p>
+  <h2>Ejemplo sencillo</h2>
+  <pre><code>function saludar() {
+  alert("¡Hola! Bienvenido a mi web.");
+}</code></pre>
+  <button class="btn" id="helloBtn">Probar el ejemplo</button>
+  <h2>Conceptos iniciales</h2>
+  <div class="table">
+    <p><code>let</code> Crea una variable que puede cambiar.</p>
+    <p><code>const</code> Crea una constante.</p>
+    <p><code>function</code> Define una función.</p>
+    <p><code>if</code> Permite tomar decisiones.</p>
+    <p><code>addEventListener</code> Escucha eventos como clics.</p>
+  </div>
+  <div class="tip">Practica escribiendo el código y cambiando el mensaje para hacerlo tuyo.</div>
+  <a class="btn" href="#practicas">Ir a las prácticas →</a>
+  <footer>Mi Diseño Web · Lección de JavaScript</footer>
+</div>
+
+<!-- ============ PRÁCTICAS ============ -->
+<div class="page lesson" id="p-practicas" data-title="Prácticas | Mi Diseño Web">
+  <span class="tag">PON A PRUEBA LO APRENDIDO</span>
+  <h1>Prácticas rápidas</h1>
+  <p>Responde estas preguntas y comprueba tus conocimientos.</p>
+  <div class="quiz" id="quiz">
+    <h2 id="question"></h2>
+    <div id="answers"></div>
+    <p id="feedback" aria-live="polite"></p>
+    <button class="btn" id="nextBtn" hidden>Siguiente pregunta</button>
+    <p class="small" id="score"></p>
+  </div>
+  <a class="btn secondary" href="#inicio">Volver al inicio</a>
+  <footer>Mi Diseño Web · Sigue practicando</footer>
+</div>
+
+</main>
+
+<script>
+// ---------- Navegación entre secciones ----------
+var nav = document.getElementById('nav');
+var paginas = document.querySelectorAll('.page');
+var enlaces = nav.querySelectorAll('a');
+
+function mostrar(){
+  var id = (location.hash || '#inicio').slice(1);
+  if (!document.getElementById('p-' + id)) id = 'inicio';
+  for (var i = 0; i < paginas.length; i++) {
+    var activa = paginas[i].id === 'p-' + id;
+    paginas[i].classList.toggle('on', activa);
+    if (activa) document.title = paginas[i].getAttribute('data-title');
+  }
+  for (var j = 0; j < enlaces.length; j++) {
+    enlaces[j].classList.toggle('active', enlaces[j].getAttribute('data-p') === id);
+  }
+  nav.classList.remove('open');
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', mostrar);
+
+document.getElementById('menuBtn').onclick = function(){ nav.classList.toggle('open'); };
+
+// ---------- Botón de ejemplo de JavaScript ----------
+document.getElementById('helloBtn').onclick = function(){
+  alert('¡Hola! Bienvenido a mi web.');
+};
+
+// ---------- Prácticas (quiz) ----------
+var PREGUNTAS = [
+  { q: '¿Qué etiqueta se usa para el título principal?',
+    r: ['<h1>', '<title>', '<p>'], ok: 0 },
+  { q: '¿Qué propiedad de CSS cambia el color del texto?',
+    r: ['background', 'color', 'padding'], ok: 1 },
+  { q: '¿Qué palabra de JavaScript crea una variable que puede cambiar?',
+    r: ['let', 'const', 'if'], ok: 0 }
+];
+var n = 0, puntos = 0;
+
+function pintarPregunta(){
+  var p = PREGUNTAS[n];
+  document.getElementById('question').textContent = p.q;
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('nextBtn').hidden = true;
+  document.getElementById('nextBtn').textContent = n === PREGUNTAS.length - 1 ? 'Ver resultado' : 'Siguiente pregunta';
+  document.getElementById('score').textContent = 'Pregunta ' + (n + 1) + ' de ' + PREGUNTAS.length;
+  var cont = document.getElementById('answers'); cont.innerHTML = '';
+  p.r.forEach(function(texto, i){
+    var b = document.createElement('button');
+    b.className = 'answer'; b.textContent = texto;
+    b.onclick = function(){ responder(i, b); };
+    cont.appendChild(b);
+  });
+}
+
+function responder(i, boton){
+  var p = PREGUNTAS[n];
+  var botones = document.querySelectorAll('#answers .answer');
+  for (var k = 0; k < botones.length; k++) botones[k].disabled = true;
+  botones[p.ok].classList.add('good');
+  if (i === p.ok) {
+    puntos++;
+    document.getElementById('feedback').textContent = '✅ ¡Correcto!';
+  } else {
+    boton.classList.add('bad');
+    document.getElementById('feedback').textContent = '❌ Casi. La respuesta correcta es ' + p.r[p.ok];
+  }
+  document.getElementById('nextBtn').hidden = false;
+}
+
+document.getElementById('nextBtn').onclick = function(){
+  if (n < PREGUNTAS.length - 1) { n++; pintarPregunta(); return; }
+  document.getElementById('question').textContent = '¡Terminaste! Acertaste ' + puntos + ' de ' + PREGUNTAS.length;
+  document.getElementById('answers').innerHTML = '';
+  document.getElementById('feedback').textContent = puntos === PREGUNTAS.length ? '🎉 ¡Perfecto!' : 'Repasa las lecciones e inténtalo otra vez.';
+  document.getElementById('score').textContent = '';
+  this.textContent = 'Intentar de nuevo';
+  this.onclick = function(){ location.reload(); };
+};
+
+pintarPregunta();
+mostrar();
+
+// ---------- Funciona sin internet ----------
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('service-worker.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
